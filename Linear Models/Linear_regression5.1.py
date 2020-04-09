@@ -14,11 +14,6 @@ class Model(nn.Module):
         super(Model, self).__init__()
         self.linear = nn.Linear(1,1)
     def forward(self, x):
-        """
-        In the forward function we accept a Tensor of input data and we must return
-        a Tensor of output data. We can use Modules defined in the constructor as
-        well as arbitrary operators on Tensors.
-        """
         y_pred = self.linear(x)
         return y_pred
 
@@ -27,7 +22,11 @@ model = Model()
 #Criterion and Optimizer Initialisation
 criterion = nn.MSELoss(size_average=None)
 optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
-
+# optimizer = torch.optim.Adagrad(model.parameters(), lr=0.01)
+# optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+# optimizer = torch.optim.Adamax(model.parameters(), lr=0.001)
+# optimizer = torch.optim.Adamax(model.parameters(), lr=0.001)
+# optimizer = torch.optim.Adamax(model.parameters(), lr=0.001)
 #Training
 #Forward->loss->(Zero Grad)->backward->update
 for epoch in range(500):
